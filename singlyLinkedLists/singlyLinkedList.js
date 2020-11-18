@@ -69,6 +69,65 @@ class SinglyLinkedList {
 
 
     }
+
+    //shifting-removing new node from beginning of linked list (constant time)
+    shift() {
+        //no nodes, return undefined
+        if (!this.head) return undefined;
+        //store the current head property in a variable
+        let currentHead = this.head;
+        //set the head property to be the current head's next property (next node)
+        this.head = currentHead.next;
+        //decrement the length of the list by 1
+        this.length--;
+        //if length is 0, set tail to null
+        if (this.length === 0) {
+            this.tail = null;
+        }
+        //return the value of the node removed
+        return currentHead;
+
+    }
+
+    //adding a new node to the beginning of the Linked List
+    //this function should accept a value
+    unshift(val) {
+        //create a new node using value passed to the function
+        let newHead = new Node(val);
+        //if there is no head property on the list, set the head and tail to be the newly created node
+        if (!this.head) {
+            this.head = newHead;
+            this.tail = this.head;
+        }
+        //otherwise...
+        else {
+            //set newly created node's next property to be the current head property on the list (ie the newly created node should be pointing to the current head)
+            newHead.next = this.head;
+            //then set the head property on the list to be the newly created node
+            this.head = newHead;
+        }
+        //increment the length of the list by 1
+        this.length++;
+        //return the linked list
+        return list;
+
+    }
+
+    //retrieving a node by its position in the Linked List
+    //function accepts an index (but not the same idea as an array--more of keeping track of a count rather than index) or position and returns the value or item in that position
+    get(index) {
+        //if the index is less than zero or greater than or equal to the length of the list, return null;
+        if (index < 0 || index >= this.length) return null;
+        //loop through the list until you reach the index and return the node at that specific index
+        let current = this.head
+        for (let i = 0; i < index; i++) {
+            //in order to traverse the list, we are setting the current node to the next property and so on until we reach that specific index 
+            current = current.next
+        }
+        //return the node at that index we passed in as an argument
+        return current
+    }
+
 }
 
 let list = new SinglyLinkedList()
@@ -77,11 +136,14 @@ list.push(2);
 list.push(3);
 
 
-console.log(list.pop());
-console.log(list)
-console.log(list.pop());
-console.log(list)
-console.log(list.pop());
-console.log(list)
+
+console.log(list.get(0));
+console.log(list);
+// console.log(list.shift());
+// console.log(list);
+// console.log(list.shift());
+// console.log(list);
+
+
 
 
