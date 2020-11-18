@@ -113,15 +113,20 @@ class SinglyLinkedList {
 
     }
 
-    /* Sample code to traverse the list, taken from the Udemy course
-   traverse() {
-       var current= this.head;
-       while (current) {
-           console.log(current.val);
-           current = current.next;
-       }
-   }
-   */
+    //retrieving a node by its position in the Linked List
+    //function accepts an index (but not the same idea as an array--more of keeping track of a count rather than index) or position and returns the value or item in that position
+    get(index) {
+        //if the index is less than zero or greater than or equal to the length of the list, return null;
+        if (index < 0 || index >= this.length) return null;
+        //loop through the list until you reach the index and return the node at that specific index
+        let current = this.head
+        for (let i = 0; i < index; i++) {
+            //in order to traverse the list, we are setting the current node to the next property and so on until we reach that specific index 
+            current = current.next
+        }
+        //return the node at that index we passed in as an argument
+        return current
+    }
 
 }
 
@@ -131,7 +136,8 @@ list.push(2);
 list.push(3);
 
 
-console.log(list.unshift(10));
+
+console.log(list.get(0));
 console.log(list);
 // console.log(list.shift());
 // console.log(list);
