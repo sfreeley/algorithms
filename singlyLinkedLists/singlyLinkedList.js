@@ -69,6 +69,40 @@ class SinglyLinkedList {
 
 
     }
+
+    //shifting-removing new node from beginning of linked list (constant time)
+    shift() {
+        //no nodes, return undefined
+        if (!this.head) return undefined;
+        //store the current head property in a variable
+        let currentHead = this.head;
+        //set the head property to be the current head's next property (next node)
+        this.head = currentHead.next;
+        //decrement the length of the list by 1
+        this.length--;
+        //if length is 0, set tail to null
+        if (this.length === 0) {
+            this.tail = null;
+        }
+        //return the value of the node removed
+        return currentHead;
+
+    }
+
+    unshift(val) {
+
+    }
+
+    /* Sample code to traverse the list, taken from the Udemy course
+   traverse() {
+       var current= this.head;
+       while (current) {
+           console.log(current.val);
+           current = current.next;
+       }
+   }
+   */
+
 }
 
 let list = new SinglyLinkedList()
@@ -77,11 +111,13 @@ list.push(2);
 list.push(3);
 
 
-console.log(list.pop());
-console.log(list)
-console.log(list.pop());
-console.log(list)
-console.log(list.pop());
-console.log(list)
+console.log(list.shift());
+console.log(list);
+console.log(list.shift());
+console.log(list);
+console.log(list.shift());
+console.log(list);
+
+
 
 
