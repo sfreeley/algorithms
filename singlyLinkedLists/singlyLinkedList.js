@@ -128,6 +128,14 @@ class SinglyLinkedList {
         return current
     }
 
+    //can also use a while loop with a counter (while the counter does not equal the index we are looking for)
+    //let counter = 0;
+    //let current = this.head;
+    /* while(counter !== index) {
+        current = current.next;
+        counter++
+    } */
+
 }
 
 let list = new SinglyLinkedList()
