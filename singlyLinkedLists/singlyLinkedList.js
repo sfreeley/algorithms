@@ -188,6 +188,15 @@ class SinglyLinkedList {
         //if the index is 0; use the shift method to remove the node from the beginning of the list
         if (index === 0) return this.shift();
         //otherwise, use get method to access the node at (index - 1) --> accessing the node prior to the one that is being removed
+        const previousNode = this.get(index - 1);
+        //the removedNode should be the node that previousNode is pointing to
+        const removedNode = previousNode.next;
+        //set the next property on the previousNode to be the next of the next node (ie set the previousNode's next property to whatever the removedNode was pointing to)
+        previousNode.next = removedNode.next;
+        //decrement the length
+        this.length--;
+        //return the value of the node that was removed
+        return removedNode;
 
     }
 }
@@ -202,9 +211,10 @@ list.push(4);
 
 console.log(list.get(3));
 console.log(list);
-console.log(list.insert(3, 7));
+console.log(list.remove(3));
 console.log(list);
 console.log(list.get(3));
+
 
 
 
