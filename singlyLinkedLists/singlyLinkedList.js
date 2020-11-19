@@ -128,21 +128,94 @@ class SinglyLinkedList {
         return current
     }
 
+    //can also use a while loop with a counter (while the counter does not equal the index we are looking for)
+    //let counter = 0;
+    //let current = this.head;
+    /* while(counter !== index) {
+        current = current.next;
+        counter++
+    } */
+
+    //changing the value of a node based on its position in Linked List
+    //accepts 2 parameters: index and value
+    set(index, value) {
+        //use get function to find specific node
+        const foundNode = this.get(index);
+        //if node is not found, return false
+        if (!foundNode) {
+            return false;
+        }
+        //otherwise, if node is found, set the value of that found node to be the value 
+        //passed into the function as an argument
+        foundNode.val = value;
+        //return true
+        return true;
+
+    }
+
+    //adding a node to the Linked List at a specific position
+    //accepts 2 parameters: index and value
+    insert(index, value) {
+        //if index is less than zero or greater than the length of the list, return false
+        if (index < 0 || index > this.length) return false;
+        //if the index is the same as the length of the list, use push method to add a new node to the end of the list
+        // double bang (double negation)
+        if (index === this.length) return !!this.push(value);
+        //if the index is 0, use the unshift method to add a new node to the beginning of the list
+        if (index === 0) return !!this.unshift(value);
+        //otherwise, using the get method, access the node at (index - 1) meaning we are getting the index
+        //at the position left of where we are adding the new node
+        const previousNode = this.get(index - 1);
+        //instanstiate a new Node
+        const newNode = new Node(value);
+        //set that new Node's next property to the old node that previousNode was pointing to
+        //(can also create intermediate variable that holds the value of previousNode.next and set newNode.next to it)
+        newNode.next = previousNode.next
+        //then set previousNode's next property to the new Node
+        previousNode.next = newNode;
+        //increment the length of the list
+        this.length++
+        //return true
+        return true;
+    }
+
+    //removing a node from the Linked List at a specific position
+    remove(index) {
+        //if the index is less than zero or greater than or equal to the length, return undefined
+        if (index < 0 || index >= this.length) return undefined;
+        //if the index is the same as the length - 1, use the pop method to remove the node from the end of the list (b/c index is always one less than length)
+        if (index === this.length - 1) return this.pop();
+        //if the index is 0; use the shift method to remove the node from the beginning of the list
+        if (index === 0) return this.shift();
+        //otherwise, use get method to access the node at (index - 1) --> accessing the node prior to the one that is being removed
+        const previousNode = this.get(index - 1);
+        //the removedNode should be the node that previousNode is pointing to
+        const removedNode = previousNode.next;
+        //set the next property on the previousNode to be the next of the next node (ie set the previousNode's next property to whatever the removedNode was pointing to)
+        previousNode.next = removedNode.next;
+        //decrement the length
+        this.length--;
+        //return the value of the node that was removed
+        return removedNode;
+
+    }
 }
 
 let list = new SinglyLinkedList()
 list.push(1);
 list.push(2);
 list.push(3);
+list.push(4);
 
 
 
-console.log(list.get(0));
+console.log(list.get(3));
 console.log(list);
-// console.log(list.shift());
-// console.log(list);
-// console.log(list.shift());
-// console.log(list);
+console.log(list.remove(3));
+console.log(list);
+console.log(list.get(3));
+
+
 
 
 
