@@ -136,6 +136,26 @@ class SinglyLinkedList {
         counter++
     } */
 
+    //changing the value of a node based on its position in Linked List
+    //accepts 2 parameters: index and value
+    set(index, value) {
+        //use get function to find specific node
+        const foundNode = this.get(index);
+        //if node is not found, return false
+        if (!foundNode) {
+            return false;
+        }
+        //otherwise, if node is found, set the value of that found node to be the value 
+        //passed into the function as an argument
+        foundNode.val = value;
+        //return true
+        return true;
+
+    }
+
+    insert() {
+
+    }
 }
 
 let list = new SinglyLinkedList()
@@ -146,6 +166,8 @@ list.push(3);
 
 
 console.log(list.get(0));
+console.log(list);
+console.log(list.set(0, 10));
 console.log(list);
 // console.log(list.shift());
 // console.log(list);
