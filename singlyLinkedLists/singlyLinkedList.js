@@ -203,7 +203,7 @@ class SinglyLinkedList {
     //reversing linked list in place
     reverse() {
         //swap the head and tail
-        //create a variable and initialize it to the head property
+        //create a variable that will be what our current node is and initialize it to the head property
         let currentNode = this.head;
         //set the current head node to the tail
         this.head = this.tail
@@ -217,15 +217,16 @@ class SinglyLinkedList {
 
         //loop through the list
         for (let i = 0; i < this.length; i++) {
-            //next will be equal to whatever the currentNode's next property is
+            //next will be set equal to whatever the currentNode's next property is (whatever the current node is pointing to at the moment)
             next = currentNode.next;
-            //need to set the current node's next property to equal the previous node (which initially will be null)
+            //in order to reverse the direction that the the current node is pointing to, we need to set the current node's next property to equal the previous node (which initially will be null)
             currentNode.next = prev;
             //then shift the window over and set the previous node equal to the current node
             prev = currentNode;
             //then the currentNode now will become the next node
             currentNode = next;
         }
+        //return the list;
         return this;
     }
 }
