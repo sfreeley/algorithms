@@ -16,6 +16,7 @@ class SinglyLinkedList {
         this.length = 0;
     }
     //push method: INSERT new node to end of the list (tail)
+    //O(1) Big O notation
     //with each push we are adding a new node to the end of the list and pointing to it
     push(val) {
         //new instance of Node
@@ -37,6 +38,8 @@ class SinglyLinkedList {
         return this;
     }
 
+    //removing node from end of linked list
+    //O(N) because we must loop through the whole list and find the node prior to the one we are removing
     pop() {
         //if no nodes, return undefined
         if (this.head === null) return undefined;
@@ -70,7 +73,8 @@ class SinglyLinkedList {
 
     }
 
-    //shifting-removing new node from beginning of linked list (constant time)
+    //shifting-removing new node from beginning of linked list 
+    //O(1) Big O notation--> constant time only if removing from beginning
     shift() {
         //no nodes, return undefined
         if (!this.head) return undefined;
@@ -90,6 +94,7 @@ class SinglyLinkedList {
     }
 
     //adding a new node to the beginning of the Linked List
+    //O(1) Big O notation
     //this function should accept a value
     unshift(val) {
         //create a new node using value passed to the function
@@ -114,6 +119,7 @@ class SinglyLinkedList {
     }
 
     //retrieving a node by its position in the Linked List
+    //O(N) have to loop through to find the position
     //function accepts an index (but not the same idea as an array--more of keeping track of a count rather than index) or position and returns the value or item in that position
     get(index) {
         //if the index is less than zero or greater than or equal to the length of the list, return null;
@@ -153,7 +159,8 @@ class SinglyLinkedList {
 
     }
 
-    //adding a node to the Linked List at a specific position
+    //adding a node to the Linked List at a specific position 
+    //O(1) Big O notation
     //accepts 2 parameters: index and value
     insert(index, value) {
         //if index is less than zero or greater than the length of the list, return false
@@ -229,6 +236,9 @@ class SinglyLinkedList {
         //return the list;
         return this;
     }
+
+    //BIG O --> singly linked lists are good at insertion and deletion as compared to arrays; do not have to shift the entire array
+    //arrays are better at random access due to indexing
 }
 
 let list = new SinglyLinkedList()
