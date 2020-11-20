@@ -16,6 +16,7 @@ class SinglyLinkedList {
         this.length = 0;
     }
     //push method: INSERT new node to end of the list (tail)
+    //O(1) Big O notation
     //with each push we are adding a new node to the end of the list and pointing to it
     push(val) {
         //new instance of Node
@@ -37,6 +38,8 @@ class SinglyLinkedList {
         return this;
     }
 
+    //removing node from end of linked list
+    //O(N) because we must loop through the whole list and find the node prior to the one we are removing
     pop() {
         //if no nodes, return undefined
         if (this.head === null) return undefined;
@@ -70,7 +73,8 @@ class SinglyLinkedList {
 
     }
 
-    //shifting-removing new node from beginning of linked list (constant time)
+    //shifting-removing new node from beginning of linked list 
+    //O(1) Big O notation--> constant time only if removing from beginning
     shift() {
         //no nodes, return undefined
         if (!this.head) return undefined;
@@ -90,6 +94,7 @@ class SinglyLinkedList {
     }
 
     //adding a new node to the beginning of the Linked List
+    //O(1) Big O notation
     //this function should accept a value
     unshift(val) {
         //create a new node using value passed to the function
@@ -114,6 +119,7 @@ class SinglyLinkedList {
     }
 
     //retrieving a node by its position in the Linked List
+    //O(N) have to loop through to find the position
     //function accepts an index (but not the same idea as an array--more of keeping track of a count rather than index) or position and returns the value or item in that position
     get(index) {
         //if the index is less than zero or greater than or equal to the length of the list, return null;
@@ -153,7 +159,8 @@ class SinglyLinkedList {
 
     }
 
-    //adding a node to the Linked List at a specific position
+    //adding a node to the Linked List at a specific position 
+    //O(1) Big O notation
     //accepts 2 parameters: index and value
     insert(index, value) {
         //if index is less than zero or greater than the length of the list, return false
@@ -199,6 +206,39 @@ class SinglyLinkedList {
         return removedNode;
 
     }
+
+    //reversing linked list in place
+    reverse() {
+        //swap the head and tail
+        //create a variable that will be what our current node is and initialize it to the head property
+        let currentNode = this.head;
+        //set the current head node to the tail
+        this.head = this.tail
+        //set the tail node equal to the current head
+        this.tail = currentNode;
+        //create a variable called next (node after the current node);
+        let next;
+        //create a variable called prev (node prior to the currentNode) --> initially will be null because there will be nothing prior to the first node (the tail);
+        //it needs to be null so that tail.next is null 
+        let prev = null;
+
+        //loop through the list
+        for (let i = 0; i < this.length; i++) {
+            //next will be set equal to whatever the currentNode's next property is (whatever the current node is pointing to at the moment)
+            next = currentNode.next;
+            //in order to reverse the direction that the the current node is pointing to, we need to set the current node's next property to equal the previous node (which initially will be null)
+            currentNode.next = prev;
+            //then shift the window over and set the previous node equal to the current node
+            prev = currentNode;
+            //then the currentNode now will become the next node
+            currentNode = next;
+        }
+        //return the list;
+        return this;
+    }
+
+    //BIG O --> singly linked lists are good at insertion and deletion as compared to arrays; do not have to shift the entire array
+    //arrays are better at random access due to indexing
 }
 
 let list = new SinglyLinkedList()
@@ -209,11 +249,11 @@ list.push(4);
 
 
 
-console.log(list.get(3));
+
 console.log(list);
-console.log(list.remove(3));
-console.log(list);
-console.log(list.get(3));
+console.log(list.get(2))
+console.log(list.reverse());
+console.log(list.get(2));
 
 
 
