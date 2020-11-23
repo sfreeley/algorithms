@@ -1,3 +1,4 @@
+//Udemy Javascript Algos Course: Singly Linked Lists
 //piece of data -val
 //reference to next node - next
 
