@@ -3,7 +3,6 @@
 //given two strings, write a function to determine if the second string is an anagram of the first
 //anagram = word, phrase, or name formed by rearranging letters of another (ie cinema ==> iceman)
 
-
 const validAnagram = (str1, str2) => {
     //if the two string lengths don't match, return false because we know we can't make an anagram with different amount of characters in the two strings
     if (str1.length !== str2.length) return false;
@@ -11,12 +10,12 @@ const validAnagram = (str1, str2) => {
     let freqChar1 = {};
     let freqChar2 = {};
 
-    //loop through the first string
+    //loop through the first string; if the character is already a key in the object, increment it; otherwise set it equal to 1
     for (let char of str1) {
         freqChar1[char] = ++freqChar1[char] || 1
     }
 
-    //loop through the second string
+    //loop through the second string; if the character is already a key in the object, increment it; otherwise set it equal to 1
     for (let char of str2) {
         freqChar2[char] = ++freqChar2[char] || 1
     }
@@ -24,7 +23,7 @@ const validAnagram = (str1, str2) => {
     console.log(freqChar1);
     console.log(freqChar2);
 
-    //check to see if characters and frequencies match in both frequency objects from above
+    //check to see if characters and frequencies match in both objects from above
     for (let key in freqChar1) {
         //if the key in freqChar1 is not in freqChar2 return false
         if (!key in freqChar2) {
@@ -35,10 +34,9 @@ const validAnagram = (str1, str2) => {
             return false
         }
     }
+    //otherwise return true;
     return true;
 
 
-
-
 }
-console.log(validAnagram("freqChar1", "freqChar1"))
+console.log(validAnagram("zaaayyy", "ayayayz"))
