@@ -37,6 +37,5 @@ const validAnagram = (str1, str2) => {
     //otherwise return true;
     return true;
 
-
 }
 console.log(validAnagram("zaaayyy", "ayayayz"))
