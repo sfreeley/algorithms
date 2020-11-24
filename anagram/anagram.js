@@ -1,5 +1,5 @@
 //Udemy- JavaScript algorithm practice
-//frequency Counter valid Anagram
+//frequency Counter valid Anagram (O(N) time)
 //given two strings, write a function to determine if the second string is an anagram of the first
 //anagram = word, phrase, or name formed by rearranging letters of another (ie cinema ==> iceman)
 
