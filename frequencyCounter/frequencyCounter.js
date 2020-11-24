@@ -10,12 +10,12 @@ const same = (arr1, arr2) => {
     //declare the variables to hold the object that will hold the key value pairs of the numbers in the and their frequencies in each array
     let freqCounter1 = {};
     let freqCounter2 = {};
-    //we need to loop through the first array
+    //we need to loop through the first array; if the key is not in the object, set it equal to 1, otherwise increment by 1
     for (let num of arr1) {
         freqCounter1[num] = ++freqCounter1[num] || 1;
     }
 
-    //we need to loop through the second array
+    //we need to loop through the second array; if the key is not in the object, set it equal to 1, otherwise increment by 1
     for (let num of arr2) {
         freqCounter2[num] = ++freqCounter2[num] || 1;
     }
