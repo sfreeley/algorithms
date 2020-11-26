@@ -3,7 +3,7 @@
 //function should calculate the maximum sum of num consecutive elements in the array
 
 const maxSubarraySum = (arr, num) => {
-    //edge case if the array is empty
+    //edge case; not possible if the array length is less than the num you want to sum so return null;
     if (arr.length < num) return null;
 
     //currentSum will hold the current sum of num numbers
