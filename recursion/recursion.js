@@ -40,7 +40,7 @@ function factorial(num) {
 }
 console.log(factorial(3))
 
-//helper method recrusion
+//helper method recursion example
 function collectOddValues(arr) {
     let result = [];
 
@@ -65,4 +65,17 @@ function collectOddValues(arr) {
 
     return result;
 }
+
+//pure recursion example to find all odd values in an array (without helper method)
+function collectOdds(arr) {
+    let newArray = [];
+    if (arr.length === 0) return newArray;
+    if (arr[0] % 2 !== 0) newArray.push(arr[0]);
+    //newArray will equal the newArray added (using concat array method) with the result of collectOdds calling itself on a subarray that doesn't include the first value
+    //with each iteration it will then add the first number in the subarray only if it is odd
+    newArray = newArray.concat(collectOdds(arr.slice(1)));
+    return newArray;
+}
+console.log(collectOdds([1, 2, 3, 4, 5]))
+
 
